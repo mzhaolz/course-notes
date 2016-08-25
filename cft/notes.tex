@@ -1,0 +1,142 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\usepackage{amsthm,amssymb,amsmath}
+\usepackage{enumerate}
+\usepackage{fullpage}
+\usepackage{flexisym}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage[bookmarks,colorlinks,breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
+\usepackage{color}
+\definecolor{dullmagenta}{rgb}{0.4,0,0.4}   % #660066
+\definecolor{darkblue}{rgb}{0,0,0.4}
+\hypersetup{linkcolor=red,citecolor=blue,filecolor=dullmagenta,urlcolor=darkblue} % coloured links
+%\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black} % black links, for printed output
+\usepackage{caption, subcaption}
+
+
+\setlength{\textfloatsep}{10pt}
+\setlength\parindent{0pt}
+\setlength{\parskip}{0.5em}
+
+\newcommand{\no}{\noindent}
+\newcommand{\ud}{\,\mathrm{d}}
+\newcommand{\sech}{\text{sech}}
+\newcommand{\x}{{\mathbf x}}
+\newtheorem{rmk}{Remark}
+\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{claim}{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{definition}[thm]{Definition}
+\newcommand{\ie}{{\it i.e. }}
+\newcommand{\com}[1]{\color{blue}{ #1 }\color{black}}
+\newcommand{\cl}[1]{{\mathrm{Cl}(#1)}}
+\newcommand{\roi}[1]{\mathcal{O}_{#1}}
+\newcommand{\gal}[3]{\mathrm{Gal}(#1 #2 #3)}
+\newcommand{\iso}{\cong}
+\newcommand{\rats}{\mathbb{Q}}
+\renewcommand{\prime}{\mathfrak{p}}
+\newcommand{\oprime}{\mathfrak{P}}
+\newcommand{\oprimealt}{\oprime^o}
+\newcommand{\frob}[1]{\mathrm{Fr}_{#1}}
+\newcommand{\legndr}[2]{\left(\dfrac{#1}{#2}\right)}
+\newcommand{\N}[1]{N(#1)}
+\newcommand{\Z}[1]{\mathbb{Z}/#1 \mathbb{Z}}
+\newcommand{\Zn}{\mathbb{Z}/n\mathbb{Z}}
+\newcommand{\Znu}{\left(\mathbb{Z}/n\mathbb{Z}\right)^\times}
+\newcommand{\Zp}{\mathbb{Z}/p\mathbb{Z}}
+\newcommand{\Zpu}{\left(\mathbb{Z}/p\mathbb{Z}\right)^\times}
+
+ \graphicspath{{./figures/}} %note trailing /
+
+%\usepackage{showkeys}
+
+\begin{document}
+
+\section{Overview and Review, 8/23/16}
+
+\subsection{Overview}
+Class field theory provides a dictionary between abelian extensions of a given number field $F$ (\ie Galois extensions of $F$ with abelian Galois group) and intrinsic data about the number field, e.g. the class group of the ring of integers, $\cl{\roi F}$. For instance, if we let $H$ be the union of all abelian extensions of $F$ that are everywhere unramified, we have $\gal H/F \iso \cl{\roi F}$.
+
+However, class field theory does not construct these abelian extensions, except for two classical constructions which were already known:
+\begin{enumerate}
+\item $F = \rats$, which has $H = \rats(\mu_\infty)$, where we have adjoined all the roots of unity. This is Kronecker-Weber theorem.
+\item $F$ a quadratic imaginary extension of $\rats$.
+\end{enumerate}
+This is not so bad, however, since it turns out that class field theory can actually yield information about non-abelian extensions!
+
+\subsection{Topics}
+\begin{itemize}
+\item Review local and global fields.
+\item Group and Galois cohomology.
+\item Local class field theory and local duality (important!).
+\item Global class field theory and global duality.
+\item Applications (Iwasawa theory).
+\end{itemize}
+
+\subsection{Review}
+\subsubsection{First Example}
+Let $L/K$ be a finite Galois extension. Let $\oprime$ be an unramified prime of $L$ lying over $\prime$, so that $\prime \roi L = \prod \oprime_i^{e_i}$ with all $e_i = 1$.
+\begin{lem}
+There is an element $\frob \oprime$ of $\gal L/K$ such that
+\begin{enumerate}[1)]
+\item $\frob \oprime (\oprime) = \oprime$, i.e. $\frob \oprime$ is in the decomposition group of $\oprime$.
+\item \label{frauto} $\frob \oprime$ acts on $\roi L / \oprime$ as $x \rightarrow x^{N(\prime)}$.
+\end{enumerate}
+\end{lem}
+\begin{rmk}
+Note that $\roi K / \prime$ is a finite field of order $N(\prime)$, which has the Frobenius automorphism that does precisely what \ref{frauto} does. We should think of $\frob \oprime$ as a lift of that map to $\roi L/\oprime$. 
+\end{rmk}
+
+\begin{proof}
+We will construct $\frob \oprime$ explicitly. Let $\alpha \in \roi L$ satisfying
+\begin{enumerate}
+\item $\alpha$ generates $(\roi L/\oprime)^{\times}$, and
+\item for all $\oprimealt \neq \oprime$ above $\prime$, $\alpha \in \oprimealt$.
+\end{enumerate}
+
+Set $F(X) = \displaystyle \prod_{\sigma \in \gal L/K} (X - \sigma \alpha) \in \roi K[X].$ Then $F(\alpha) = 0$, so $F(\alpha^{\N \prime}) = F(\alpha)^{\N \prime} = 0$.
+
+Then for some $\sigma, \alpha^{\N \prime} \equiv \sigma \alpha \pmod \oprime$. Then we claim that $\sigma \oprime = \oprime$. Otherwise, $\sigma^{-1} \oprime \neq \oprime$, so $\alpha \in \sigma^{-1} \oprime$, so $\sigma \alpha \in \oprime$. So $\alpha^{\N \prime} \equiv 0 \pmod \oprime$, a contradiction. 
+
+Then for all $x \in \roi L / \oprime$, we can write $x = \alpha^i + b$, for some $i$ and $b \in \oprime$. Then \[\sigma(x) = \sigma(\alpha^i) + \sigma(b) = \alpha^{i \N \prime} + \sigma(b) \equiv x^{\N \prime} \pmod \oprime.\] Now define $\frob \oprime := \sigma$. Uniqueness is left to the reader. 
+\end{proof}
+
+\begin{rmk}
+If $\oprimealt = \tau(\oprime)$ for some $\tau \in \gal L/K$, $\frob \oprimealt = \tau \frob \oprime \tau^{-1}$.
+\end{rmk}
+
+Recall that $L/K$ being Galois means $\gal L/K$ acts transitively on the primes $\oprime$ lying over $\prime$. So $\frob \oprime$ is well-defined up to conjugation. If $L/K$ is abelian, it is well-defined. 
+
+\subsubsection{$\frob \oprime$ of Cyclotomic Field}
+Let $L = \rats(\zeta_n)$ be the $n$-th cyclotomic field, $K = \rats$. Then $\gal L/K \iso \Znu$. Take $p$ unramified in $L/K$, i.e. $p$ not dividing $n$. Then $\frob p$ (we are in an abelian extension, so all $\frob \oprime$ are the same). By definition, $\frob p$ is the $\sigma$ such that $\sigma(\alpha) = \alpha^p \pmod \oprime$, for all $\oprime$ over $p$. 
+
+Also characterized by $\tau(\zeta_n) = \zeta_n^p$ since \[\tau \sum a_i \zeta_n^i = (\sum a_i \zeta_n^i)^p.\]
+
+\subsubsection{$\frob \oprime$ of Quadratic Field}
+Here, we let $L = \rats(\sqrt{d})$ and $K$ as before. Then $\gal L/K \iso \Z 2$, and for $p$ unramified in $L$, $\frob p$ corresponds to $1$ if $p$ splits in $L$, or $-1$ if $p$ is inert in $L$. This means that \[\frob p = \legndr d p.\]
+
+This connection leads us to an extremely nice proof of the quadratic reciprocity for odd primes.
+\begin{thm}
+Let $p \neq q$ be odd primes. Then $\legndr p q \legndr q p = (-1)^{\frac{p - 1}{2} \frac{q - 1}{2}}.$
+\end{thm}
+\begin{proof}
+Let $L = \rats(\zeta_p)$, $K = \rats$. Then $\gal L/K$ is cyclic of order $p - 1$, and so has a unique order two quotient which corresponds to a quadratic field $F$, where $F = \rats\left(\sqrt{(-1)^{\frac{p - 1}{2}}p}\right)$.
+
+Since $q$ is unramified, we can consider $\frob q$ which corresponds to $q \in \Zpu$. Now we simply compute this quantity in two ways.
+\begin{enumerate}[(i)]
+\item $\frob q \rvert_F = 1 \Leftrightarrow q^{\frac{p - 1}{2}} \equiv 1 \pmod p \Leftrightarrow \legndr q p = 1$.
+\item $\frob q \rvert_F$ is also simply $\frob q$ for the quadratic extension $F$, hence equal to $\legndr{(-1)^{\frac{p - 1}{2}} p}{q}$ by the previous example.
+\end{enumerate}
+\end{proof}
+\subsection{First Case of Fermat's Last Theorem}
+\begin{thm}
+If $p$ does not divide $|\cl {\rats(\zeta_p)}|$, then $x^p + y^p = z^p$ has no integer solutions with $p$ not dividing $xyz$.
+\end{thm}
+
+The idea is that we can factor $\prod_i (x + \zeta_p^i y) = z^p$ in $\mathbb{Z}[\zeta_p]$. It turns out that regularity gives us that the LHS factors are $p$-th powers, the divisibility condition giving us that the factors are coprime. 
+\end{document}
