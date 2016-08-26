@@ -59,15 +59,22 @@
 
 \section{Overview and Review, 8/23/16}
 
-\subsection{Overview}
-Class field theory provides a dictionary between abelian extensions of a given number field $F$ (\ie Galois extensions of $F$ with abelian Galois group) and intrinsic data about the number field, e.g. the class group of the ring of integers, $\cl{\roi F}$. For instance, if we let $H$ be the union of all abelian extensions of $F$ that are everywhere unramified, we have $\gal H/F \iso \cl{\roi F}$.
+\subsection{Overview} Class field theory provides a dictionary between abelian
+extensions of a given number field $F$ (\ie Galois extensions of $F$ with
+abelian Galois group) and intrinsic data about the number field, e.g. the
+class group of the ring of integers, $\cl{\roi F}$. For instance, if we let
+$H$ be the union of all abelian extensions of $F$ that are everywhere
+unramified, we have $\gal H/F \iso \cl{\roi F}$.
 
-However, class field theory does not construct these abelian extensions, except for two classical constructions which were already known:
-\begin{enumerate}
-\item $F = \rats$, which has $H = \rats(\mu_\infty)$, where we have adjoined all the roots of unity. This is Kronecker-Weber theorem.
+However, class field theory does not construct these abelian extensions,
+except for two classical constructions which were already known:
+\begin{enumerate} 
+\item $F = \rats$, which has $H = \rats(\mu_\infty)$, where
+we have adjoined all the roots of unity. This is Kronecker-Weber theorem.
 \item $F$ a quadratic imaginary extension of $\rats$.
 \end{enumerate}
-This is not so bad, however, since it turns out that class field theory can actually yield information about non-abelian extensions!
+This is not so bad, however, since it turns out that class field theory can
+actually yield information about non-abelian extensions!
 
 \subsection{Topics}
 \begin{itemize}
@@ -80,16 +87,25 @@ This is not so bad, however, since it turns out that class field theory can actu
 
 \subsection{Review}
 \subsubsection{First Example}
-Let $L/K$ be a finite Galois extension. Let $\oprime$ be an unramified prime of $L$ lying over $\prime$, so that $\prime \roi L = \prod \oprime_i^{e_i}$ with all $e_i = 1$.
+Let $L/K$ be a finite Galois extension. Let $\oprime$ be an unramified prime of $L$
+lying over $\prime$, so that $\prime \roi L = \prod \oprime_i^{e_i}$ with all $e_i = 1$.
 \begin{lem}
 There is an element $\frob \oprime$ of $\gal L/K$ such that
 \begin{enumerate}[1)]
-\item $\frob \oprime (\oprime) = \oprime$, i.e. $\frob \oprime$ is in the decomposition group of $\oprime$.
-\item \label{frauto} $\frob \oprime$ acts on $\roi L / \oprime$ as $x \rightarrow x^{N(\prime)}$.
+
+\item $\frob \oprime (\oprime) = \oprime$, i.e. $\frob \oprime$ is in the
+decomposition group of $\oprime$.
+\item \label{frauto} $\frob \oprime$ acts on $\roi L / \oprime$ as
+ $x \rightarrow x^{N(\prime)}$.
+
 \end{enumerate}
 \end{lem}
 \begin{rmk}
-Note that $\roi K / \prime$ is a finite field of order $N(\prime)$, which has the Frobenius automorphism that does precisely what \ref{frauto} does. We should think of $\frob \oprime$ as a lift of that map to $\roi L/\oprime$. 
+
+Note that $\roi K / \prime$ is a finite field of order $N(\prime)$, which has
+the Frobenius automorphism that does precisely what \ref{frauto} does. We
+should think of $\frob \oprime$ as a lift of that map to $\roi L/\oprime$.
+
 \end{rmk}
 
 \begin{proof}
@@ -99,64 +115,141 @@ We will construct $\frob \oprime$ explicitly. Let $\alpha \in \roi L$ satisfying
 \item for all $\oprimealt \neq \oprime$ above $\prime$, $\alpha \in \oprimealt$.
 \end{enumerate}
 
-Set $F(X) = \displaystyle \prod_{\sigma \in \gal L/K} (X - \sigma \alpha) \in \roi K[X].$ Then $F(\alpha) = 0$, so $F(\alpha^{\N \prime}) = F(\alpha)^{\N \prime} = 0$.
+Set $F(X) = \displaystyle \prod_{\sigma \in \gal L/K} (X - \sigma \alpha) \in
+\roi K[X].$ Then $F(\alpha) = 0$, so $F(\alpha^{\N \prime}) = F(\alpha)^{\N
+\prime} = 0$.
 
-Then for some $\sigma, \alpha^{\N \prime} \equiv \sigma \alpha \pmod \oprime$. Then we claim that $\sigma \oprime = \oprime$. Otherwise, $\sigma^{-1} \oprime \neq \oprime$, so $\alpha \in \sigma^{-1} \oprime$, so $\sigma \alpha \in \oprime$. So $\alpha^{\N \prime} \equiv 0 \pmod \oprime$, a contradiction. 
+Then for some $\sigma, \alpha^{\N \prime} \equiv \sigma \alpha \pmod \oprime$.
+Then we claim that $\sigma \oprime = \oprime$. Otherwise, $\sigma^{-1} \oprime
+\neq \oprime$, so $\alpha \in \sigma^{-1} \oprime$, so $\sigma \alpha \in
+\oprime$. So $\alpha^{\N \prime} \equiv 0 \pmod \oprime$, a contradiction.
 
-Then for all $x \in \roi L / \oprime$, we can write $x = \alpha^i + b$, for some $i$ and $b \in \oprime$. Then \[\sigma(x) = \sigma(\alpha^i) + \sigma(b) = \alpha^{i \N \prime} + \sigma(b) \equiv x^{\N \prime} \pmod \oprime.\] Now define $\frob \oprime := \sigma$. Uniqueness is left to the reader. 
+Then for all $x \in \roi L / \oprime$, we can write $x = \alpha^i + b$, for
+some $i$ and $b \in \oprime$. Then \[\sigma(x) = \sigma(\alpha^i) + \sigma(b)
+= \alpha^{i \N \prime} + \sigma(b) \equiv x^{\N \prime} \pmod \oprime.\] Now
+define $\frob \oprime := \sigma$. Uniqueness is left to the reader.
 \end{proof}
 
 \begin{rmk}
-If $\oprimealt = \tau(\oprime)$ for some $\tau \in \gal L/K$, $\frob \oprimealt = \tau \frob \oprime \tau^{-1}$.
+
+If $\oprimealt = \tau(\oprime)$ for some $\tau \in \gal L/K$, $\frob
+\oprimealt = \tau \frob \oprime \tau^{-1}$.
+
 \end{rmk}
 
-Recall that $L/K$ being Galois means $\gal L/K$ acts transitively on the primes $\oprime$ lying over $\prime$. So $\frob \oprime$ is well-defined up to conjugation. If $L/K$ is abelian, it is well-defined. 
+Recall that $L/K$ being Galois means $\gal L/K$ acts transitively on the
+primes $\oprime$ lying over $\prime$. So $\frob \oprime$ is well-defined up to
+conjugation. If $L/K$ is abelian, it is well-defined.
 
 \subsubsection{$\frob \oprime$ of Cyclotomic Field}
-Let $L = \rats(\zeta_n)$ be the $n$-th cyclotomic field, $K = \rats$. Then $\gal L/K \iso \Znu$. Take $p$ unramified in $L/K$, i.e. $p$ not dividing $n$. Then $\frob p$ (we are in an abelian extension, so all $\frob \oprime$ are the same). By definition, $\frob p$ is the $\sigma$ such that $\sigma(\alpha) = \alpha^p \pmod \oprime$, for all $\oprime$ over $p$. 
 
-Also characterized by $\tau(\zeta_n) = \zeta_n^p$ since \[\tau \sum a_i \zeta_n^i = (\sum a_i \zeta_n^i)^p.\]
+Let $L = \rats(\zeta_n)$ be the $n$-th cyclotomic field, $K = \rats$. Then
+$\gal L/K \iso \Znu$. Take $p$ unramified in $L/K$, i.e. $p$ not dividing $n$.
+Then $\frob p$ (we are in an abelian extension, so all $\frob \oprime$ are the
+same). By definition, $\frob p$ is the $\sigma$ such that $\sigma(\alpha) =
+\alpha^p \pmod \oprime$, for all $\oprime$ over $p$.
+
+Also characterized by $\tau(\zeta_n) = \zeta_n^p$ since \[\tau \sum a_i
+\zeta_n^i = (\sum a_i \zeta_n^i)^p.\]
 
 \subsubsection{$\frob \oprime$ of Quadratic Field}
-Here, we let $L = \rats(\sqrt{d})$ and $K$ as before. Then $\gal L/K \iso \Z 2$, and for $p$ unramified in $L$, $\frob p$ corresponds to $1$ if $p$ splits in $L$, or $-1$ if $p$ is inert in $L$. This means that \[\frob p = \legndr d p.\]
 
-This connection leads us to an extremely nice proof of the quadratic reciprocity for odd primes.
+Here, we let $L = \rats(\sqrt{d})$ and $K$ as before. Then $\gal L/K \iso \Z
+2$, and for $p$ unramified in $L$, $\frob p$ corresponds to $1$ if $p$ splits
+in $L$, or $-1$ if $p$ is inert in $L$. This means that \[\frob p = \legndr d
+p.\]
+
+This connection leads us to an extremely nice proof of the quadratic reciprocity
+for odd primes.
+
 \begin{thm}
-Let $p \neq q$ be odd primes. Then $\legndr p q \legndr q p = (-1)^{\frac{p - 1}{2} \frac{q - 1}{2}}.$
+Let $p \neq q$ be odd primes. Then $\legndr p q \legndr q p = (-1)^{\frac{p -
+1}{2} \frac{q - 1}{2}}.$
 \end{thm}
-\begin{proof}
-Let $L = \rats(\zeta_p)$, $K = \rats$. Then $\gal L/K$ is cyclic of order $p - 1$, and so has a unique order two quotient which corresponds to a quadratic field $F$, where $F = \rats\left(\sqrt{(-1)^{\frac{p - 1}{2}}p}\right)$.
 
-Since $q$ is unramified, we can consider $\frob q$ which corresponds to $q \in \Zpu$. Now we simply compute this quantity in two ways.
+\begin{proof}
+
+Let $L = \rats(\zeta_p)$, $K = \rats$. Then $\gal L/K$ is cyclic of order $p -
+1$, and so has a unique order two quotient which corresponds to a quadratic
+field $F$, where $F = \rats\left(\sqrt{(-1)^{\frac{p - 1}{2}}p}\right)$.
+
+Since $q$ is unramified, we can consider $\frob q$ which corresponds to
+$q \in \Zpu$. Now we simply compute this quantity in two ways.
 \begin{enumerate}[(i)]
-\item $\frob q \rvert_F = 1 \Leftrightarrow q^{\frac{p - 1}{2}} \equiv 1 \pmod p \Leftrightarrow \legndr q p = 1$.
-\item $\frob q \rvert_F$ is also simply $\frob q$ for the quadratic extension $F$, hence equal to $\legndr{(-1)^{\frac{p - 1}{2}} p}{q}$ by the previous example.
+
+\item $\frob q \rvert_F = 1 \Leftrightarrow q^{\frac{p - 1}{2}} \equiv 1
+\pmod p \Leftrightarrow \legndr q p = 1$.
+
+\item $\frob q \rvert_F$ is also simply $\frob q$ for the quadratic
+extension $F$, hence equal to $\legndr{(-1)^{\frac{p - 1}{2}} p}{q}$
+by the previous example.
+
 \end{enumerate}
 \end{proof}
 \subsection{First Case of Fermat's Last Theorem}
 \begin{thm}
-If $p$ does not divide $|\cl {\rats(\zeta_p)}|$, then $x^p + y^p = z^p$ has no integer solutions with $p$ not dividing $xyz$.
+
+If $p$ does not divide $|\cl {\rats(\zeta_p)}|$, then $x^p + y^p = z^p$ has no
+integer solutions with $p$ not dividing $xyz$.
+
 \end{thm}
 
-The idea is that we can factor $\prod_i (x + \zeta_p^i y) = z^p$ in $\mathbb{Z}[\zeta_p]$. It turns out that regularity gives us that the LHS factors are $p$-th powers, the divisibility condition giving us that the factors are coprime. 
+The idea is that we can factor $\prod_i (x + \zeta_p^i y) = z^p$ in
+$\mathbb{Z}[\zeta_p]$. It turns out that regularity gives us that the LHS
+factors are $p$-th powers, the divisibility condition giving us that the
+factors are coprime.
 
 \begin{proof}
-  We take $p > 5$, since we can easily prove the cases $p = 3, 5$ by looking at the equation modulo $9, 25$ respectively. Without loss of generality, assume $x, y, z$ are coprime and $p$ does not divide $x - y$. If $x \equiv y \pmod p$ and $x \equiv -z \pmod p$, then $-2z^p \equiv z^p \pmod p$, a contradiction. So we must have one or the other.
 
-  First, prove the coprimeness of the factors. If a prime $q$ of $\mathbb{Z}[\zeta_p]$ divides two factors $x + \zeta_p^k y$ for $k = i, j, i \neq j$. Then $q | (\zeta_p^i - \zeta_p^j) y$. Since $p$ does not divide $y$, and $q | (\zeta_p^j - \zeta_p^i) x$, so $q | (\zeta_p^i - \zeta_p^j)$, the unique prime ideal over $p$. (Recall that $p \mathbb{Z}[\zeta_p] = (1 - \zeta_p)^{p - 1}$). So $q = (1 - \zeta_p) = p$, so $p | x + y$, i.e. $x + y \in \prime \cap \mathbb{Z} = p\mathbb{Z}$, so $x^p + y^p \equiv x + y \equiv 0 \pmod p$. 
+We take $p > 5$, since we can easily prove the cases $p = 3,
+5$ by looking at the equation modulo $9, 25$ respectively. Without loss of
+generality, assume $x, y, z$ are coprime and $p$ does not divide $x - y$. If
+$x \equiv y \pmod p$ and $x \equiv -z \pmod p$, then $-2z^p \equiv z^p \pmod
+p$, a contradiction. So we must have one or the other.
 
-  Hence, $(x + \zeta_p^i y) = J_i^p$ for some ideal $J_i$. But since $p$ does not divide the class group, no element can have order $p$, hence $J_i$ is principal. Then $x + \zeta_p^i y = u \alpha_i^p$ for some unit $u$. Dirichlet's unit theorem doesn't give us precise control over what the units look like, so we need to muck around with the following lemma.
+First, prove the coprimeness of the factors. If a prime $q$ of
+$\mathbb{Z}[\zeta_p]$ divides two factors $x + \zeta_p^k y$ for $k = i, j, i
+\neq j$. Then $q | (\zeta_p^i - \zeta_p^j) y$. Since $p$ does not divide
+$y$, and $q | (\zeta_p^j - \zeta_p^i) x$, so $q | (\zeta_p^i - \zeta_p^j)$,
+the unique prime ideal over $p$. (Recall that $p \mathbb{Z}[\zeta_p] = (1 -
+\zeta_p)^{p - 1}$). So $q = (1 - \zeta_p) = p$, so $p | x + y$, i.e. $x + y
+\in \prime \cap \mathbb{Z} = p\mathbb{Z}$, so $x^p + y^p \equiv x + y \equiv
+0 \pmod p$.
+
+Hence, $(x + \zeta_p^i y) = J_i^p$ for some ideal $J_i$. But since $p$ does
+not divide the class group, no element can have order $p$, hence $J_i$ is
+principal. Then $x + \zeta_p^i y = u \alpha_i^p$ for some unit $u$.
+Dirichlet's unit theorem doesn't give us precise control over what the units
+look like, so we need to muck around with the following lemma.
 
 \begin{lem}
-Let $u$ be a unit. Then $u = \zeta_p^r \epsilon$ for a unit $\epsilon$ of the maximal real subfield of the $p$-th cyclotomic field.
+
+Let $u$ be a unit. Then $u = \zeta_p^r \epsilon$ for a unit $\epsilon$ of the
+maximal real subfield of the $p$-th cyclotomic field.
+
 \end{lem}
 \begin{proof}
-  Consider $u / \bar{u}$, an algebraic integer with norm 1 in all complex embeddings. This means $u/\bar{u}$ is a root of unity, so \[u/\bar{u} = \pm \zeta_p^s,\] for some $s$. If the sign is plus, let $r$ be such that $2r \equiv s \pmod p$. It turns out that a minus sign gives us a contradiction.
+
+Consider $u / \bar{u}$, an algebraic integer with norm 1 in all complex
+embeddings. This means $u/\bar{u}$ is a root of unity, so \[u/\bar{u} = \pm
+\zeta_p^s,\] for some $s$. If the sign is plus, let $r$ be such that $2r
+\equiv s \pmod p$. It turns out that a minus sign gives us a contradiction.
+
 \end{proof}
-  So $x + \zeta_p^i y = \zeta_p^r \epsilon \alpha^p$. Conjugation gives us \[x + \zeta_p^i y \equiv \zeta^r \epsilon \alpha \] and \[ x + \zeta_p^{-i} y \equiv \zeta^{-r} \epsilon \alpha \] modulo $p \mathbb{Z}[\zeta_p]$. Hence \[ \zeta_p^{-r} ( x + \zeta_p^i y) \equiv \zeta^r ( x + \zeta_p^{-i} y) \pmod{p\mathbb{Z}[\zeta_p]}. \] We can conclude the proof from the following lemma.
+
+So $x + \zeta_p^i y = \zeta_p^r \epsilon \alpha^p$. Conjugation gives us \[x +
+\zeta_p^i y \equiv \zeta^r \epsilon \alpha \] and \[ x + \zeta_p^{-i} y \equiv
+\zeta^{-r} \epsilon \alpha \] modulo $p \mathbb{Z}[\zeta_p]$. Hence \[
+\zeta_p^{-r} ( x + \zeta_p^i y) \equiv \zeta^r ( x + \zeta_p^{-i} y)
+\pmod{p\mathbb{Z}[\zeta_p]}. \] We can conclude the proof from the following
+lemma.
 
 \begin{lem}
-If $\alpha = a_0 + \cdots + a_{p - 1} \zeta_p^{p - 1}$, $a_i \in \mathbb{Z}$ not all zero, and if $\alpha \in m \mathbb{Z}[\zeta_p], m \in \mathbb{Z}$, then $m | a_i$ for all $i$.
+
+If $\alpha = a_0 + \cdots + a_{p - 1} \zeta_p^{p - 1}$, $a_i \in \mathbb{Z}$
+not all zero, and if $\alpha \in m \mathbb{Z}[\zeta_p], m \in \mathbb{Z}$,
+then $m | a_i$ for all $i$.
+
 \end{lem}
 \end{proof}
 \end{document}

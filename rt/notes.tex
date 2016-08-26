@@ -1,0 +1,120 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\usepackage{amsthm,amssymb,amsmath}
+\usepackage{enumerate}
+\usepackage{fullpage}
+\usepackage{flexisym}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{tikz-cd,pgf}
+\usepackage[normalem]{ulem}
+\usepackage[bookmarks,colorlinks,breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
+\usepackage{color}
+\definecolor{dullmagenta}{rgb}{0.4,0,0.4}   % #660066
+\definecolor{darkblue}{rgb}{0,0,0.4}
+\hypersetup{linkcolor=red,citecolor=blue,filecolor=dullmagenta,urlcolor=darkblue} % coloured links
+%\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black} % black links, for printed output
+\usepackage{caption, subcaption}
+
+
+\setlength{\textfloatsep}{10pt}
+\setlength\parindent{0pt}
+\setlength{\parskip}{0.5em}
+
+\newcommand{\no}{\noindent}
+\newcommand{\ud}{\,\mathrm{d}}
+\newcommand{\sech}{\text{sech}}
+\newcommand{\x}{{\mathbf x}}
+\newtheorem{rmk}{Remark}
+\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{claim}{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{definition}[thm]{Definition}
+\newcommand{\ie}{{\it i.e. }}
+\newcommand{\com}[1]{\color{blue}{ #1 }\color{black}}
+\newcommand{\cl}[1]{{\mathrm{Cl}(#1)}}
+\newcommand{\roi}[1]{\mathcal{O}_{#1}}
+\newcommand{\gal}[3]{\mathrm{Gal}(#1 #2 #3)}
+\newcommand{\iso}{\cong}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\cmplx}{\mathbb{C}}
+\newcommand{\Tone}{T_1}
+\newcommand{\T}[1]{\Tone(#1)}
+\newcommand{\Tvar}[1]{T_{#1}}
+% produces a commutative square with punctuation at the end
+\newcommand{\csq}[9]{\[
+	\begin{tikzcd}[ampersand replacement=\&]
+	{#1} \arrow{r}{#5} \arrow{d}{#6}
+		\& {#2} \arrow{d}{#7} \\
+	{#3} \arrow{r}{#8}
+		\& {#4}
+	\end{tikzcd}
+#9\]}
+\newcommand{\gl}[2]{\mathrm{GL}(#1, #2)}
+\newcommand{\mat}[2]{\mathrm{M}(#1, #2)}
+\newcommand{\inv}[1]{{#1}^{-1}}
+
+\graphicspath{{./figures/}} %note trailing /
+
+%\usepackage{showkeys}
+
+\begin{document}  \section{Motivation, 8/24/16} Lie groups are differentiable
+manifolds with a group structure. Tangent space of a Lie group has additional
+structure, which we try to use to study the group action. Let $G, H$ be Lie
+groups. Then we have \csq G H {\T G} {\T H} \varphi {} {} {\T \varphi}, where
+$\Tone$ is the tangent space functor.
+
+Recall that in the previous lecture, we consided the group $\gl n \reals$.
+This is an open subspace of $\mat n \reals$ with $\dim \gl n \reals = \dim
+\mat n \reals = n^2$. Now take a matrix $A$, and consider the curve passing
+through the identity with tangent vector at $t = 0$ equal to $A$: $t
+\rightarrow I + tA$. Thus we can identify tangent vectors with elements of
+$\gl n \reals$.
+
+If we look at the multiplication map $m$, we can look at \[\Tvar {(I, I)} (m)
+: \T {\gl n \reals} \times \T {\gl n \reals} \rightarrow \T {\gl n \reals}.\]
+Note that we can still speak of the functor $\Tone$ since a product of
+manifolds is a manifold. Now consider the curve $t \rightarrow (I + tA, I +
+tB)$, which has tangent vector $(A, B)$. Then $m(I + tA, I + tB) = I + t(A +
+B) + t^2 AB.$ Hence the differential of $m$ is $A + B$, and $\T {(A, B)} = A +
+B$, which is not very useful.
+
+Take $A \in \gl n \reals$, and consider the map $B \rightarrow AB\inv A$. Let
+$\mathrm{Int}(A)$ be this map, and let's calculate $\T {\mathrm{Int}(A)}.$ If
+we look at \[ \mathrm{Int}(A)(I + tB) = I + tAB\inv A.\] The differential is
+given by the same formula as the map, however they are different since the
+domain/ranges aren't the same.
+
+In some sense, the group operation is preserved, since we can tell whether the
+group is abelian. Now look at $\mathrm{Int}(I + tA)(B) = (B + tAB)\inv {(I +
+tA)}.$ Recall that the geometric series formula holds for matrices (for some
+values of $t$), so we obtain the expansion $B + tAB - tBA + t^2 (\cdots).$ So
+the differential is a map $(A, B) \rightarrow [A, B] = AB - BA.$ This gives us
+an algebra structure, i.e. a Lie algebra.
+
+\begin{definition} A Lie algebra $L$ over $k$ is a vector space with a Lie
+bracket $L \times L \rightarrow L$ satisfying anticommutativity and the Jacobi
+identity, \[ [A, [B, C]] + [B, [C, A]] + [C, [A, B]] = 0.\] \end{definition}
+
+Anticommutativity implies that $[A, A] = 0$, unless the characteristic is
+positive (which is the case for algebraic groups).
+
+\begin{thm} Every finite-dimensional Lie algebra is isomorphic to a subalgebra
+of a matrix algebra. \end{thm}
+
+Some remarks about solvable and nilpotent Lie algebras. Comment about the Lie
+algebra functor, which induces the diagram \csq G H {L(G)} {L(H)} \varphi {}
+{} {L(\varphi)}, where $L(\varphi) := \T \varphi$.
+ 
+Lie theory is not really able to see components. For instance, $\gl n \reals$
+have two components, and by definition, only one of these has the identity. So
+Lie algebra cannot ``see'' the components, and so it gives us something for
+connected groups, e.g. $\T S^1 = \T \reals = \reals.$ However, it will be able
+to tell us something about the group's universal cover.
+
+\end{document}

@@ -54,66 +54,79 @@
 
 \begin{document}
 
-\section{Basics, 8/22/16}
-We'll let $k$ stand for a field, e.g. ($\rats, \reals, \cmplx, \ffield q, \cmplx(x_1, ..., x_n)$). Let $\polyring k 1 n$ be the polynomial ring in $n$ generators (ignoring grading). Let $\polyring k 0 n = \graded k n$ be the graded ring in $n + 1$ generators, where $\polyring{k}{0}{n}_d$ is the vector space of homogeneous polynomials of degree $d$.
+\section{Basics, 8/22/16} We'll let $k$ stand for a field, e.g. ($\rats,
+\reals, \cmplx, \ffield q, \cmplx(x_1, ..., x_n)$). Let $\polyring k 1 n$ be
+the polynomial ring in $n$ generators (ignoring grading). Let $\polyring k 0 n
+= \graded k n$ be the graded ring in $n + 1$ generators, where
+$\polyring{k}{0}{n}_d$ is the vector space of homogeneous polynomials of
+degree $d$.
 
-As a convention, we'll write $S := \polyring k 0 n$, and $S_d := \polyring{k}{0}{n}_d$. Note that we have a map $\mu: S_d \times S_e \rightarrow S_{d + e}$ given by multiplication.
+As a convention, we'll write $S := \polyring k 0 n$, and $S_d :=
+\polyring{k}{0}{n}_d$. Note that we have a map $\mu: S_d \times S_e
+\rightarrow S_{d + e}$ given by multiplication.
 
-\subsection{Affine Algebraic Geometry}
-In affine algebraic geometry, we study finitely generated modules over $S$ (think of this as a local picture).
+\subsection{Affine Algebraic Geometry} In affine algebraic geometry, we study
+finitely generated modules over $S$ (think of this as a local picture).
 
-\subsection{Projective algebraic geometry}
-Studies finitely generated graded modules over $S$ (think of this as a global picture). This is analogous to vector bundles on compact manifolds. 
+\subsection{Projective algebraic geometry} Studies finitely generated graded
+modules over $S$ (think of this as a global picture). This is analogous to
+vector bundles on compact manifolds.
 
 \subsection{Ideals in Polynomial Rings}
 \begin{thm}[Hilbert's Basis Theorem]
 If $R$ is Noetherian, $R[x]$ is.
 \end{thm}
 
-\begin{definition}
-$R$ is noetherian if every submodule $N \subset M$ of a finitely generated module $M$ is also finitely generated. This is equivalent to all ideals being finitely generated.
-\end{definition}
+\begin{definition} $R$ is noetherian if every submodule $N \subset M$ of a
+finitely generated module $M$ is also finitely generated. This is equivalent
+to all ideals being finitely generated. \end{definition}
 
-Given $f \in \polyring k 1 n$, consider $V(f) := \{ \uline{a} = (a_1, ..., a_n) \in k^n | f(\uline{a}) = 0\}$, the hypersurface in $k^n$ associated to $f$. Given an ideal $I \subset \polyring k 1 n$, then $V(I) = V(f_1) \cap \cdots \cap V(f_n)$ where $I = \langle f_1, ..., f_n \rangle$, by the Hilbert basis theorem. 
+Given $f \in \polyring k 1 n$, consider $V(f) := \{ \uline{a} = (a_1, ...,
+a_n) \in k^n | f(\uline{a}) = 0\}$, the hypersurface in $k^n$ associated to
+$f$. Given an ideal $I \subset \polyring k 1 n$, then $V(I) = V(f_1) \cap
+\cdots \cap V(f_n)$ where $I = \langle f_1, ..., f_n \rangle$, by the Hilbert
+basis theorem.
 
-\begin{thm}[Nullstellensatz]
-The map $m : k^n \rightarrow \mspec {\polyring k 1 n}$ given by $(a_1, ..., a_n) \rightarrow \langle x_1 - a_1, ..., x_n - a_n \rangle = \ker(\polyring k 1 n \rightarrow k, f \rightarrow f(\uline{a})) = \{ f | f(\uline{a}) = 0 \}$ is bijective, if $k = \bar{k}$. 
-\end{thm}
+\begin{thm}[Nullstellensatz] The map $m : k^n \rightarrow \mspec {\polyring k
+1 n}$ given by $(a_1, ..., a_n) \rightarrow \langle x_1 - a_1, ..., x_n - a_n
+\rangle = \ker(\polyring k 1 n \rightarrow k, f \rightarrow f(\uline{a})) = \{
+f | f(\uline{a}) = 0 \}$ is bijective, if $k = \bar{k}$.  \end{thm}
 
-\begin{rmk}
-When $n = 1$, $k[x]$ is a PID so any maximal $m = \langle f \rangle$. But $k$ algebraically closed iff any $f$ factors iff every max ideal is of the form $m = \langle x - a \rangle$. 
-\end{rmk}
+\begin{rmk} When $n = 1$, $k[x]$ is a PID so any maximal $m = \langle f
+\rangle$. But $k$ algebraically closed iff any $f$ factors iff every max ideal
+is of the form $m = \langle x - a \rangle$.  \end{rmk}
 
-\begin{cor}
-  Let $I$ be any proper ideal in $S$, then $V(I) \neq \emptyset$. In fact, there is a bijection between $V(I)$ and the set of maximal ideals containing $I$.
-\end{cor}
+\begin{cor}   Let $I$ be any proper ideal in $S$, then $V(I) \neq \emptyset$.
+In fact, there is a bijection between $V(I)$ and the set of maximal ideals
+containing $I$. \end{cor}
 
-\begin{cor}
-  Let $I = \langle f_1, ..., f_n \rangle$ and $V(I) = \emptyset$. Then $1 \in I$, so there exists $g_i$ such that $1 = \sum f_i g_i$.
-\end{cor}
+\begin{cor}   Let $I = \langle f_1, ..., f_n \rangle$ and $V(I) = \emptyset$.
+Then $1 \in I$, so there exists $g_i$ such that $1 = \sum f_i g_i$. \end{cor}
 
-\begin{definition}
-$X \subset k^n$ is \uline{algebraic} if $X = V(I)$ for some $I$.
-\end{definition}
+\begin{definition} $X \subset k^n$ is \uline{algebraic} if $X = V(I)$ for some
+$I$. \end{definition}
 
-Given an algebraic subset, define $I(X) := \{ f | f(\uline{a}) = 0, \forall \uline{a} \in X \}$. This function satisfies $I(V(I)) = \sqrt{I}$. 
+Given an algebraic subset, define $I(X) := \{ f | f(\uline{a}) = 0, \forall
+\uline{a} \in X \}$. This function satisfies $I(V(I)) = \sqrt{I}$.
 
-\begin{proof}
-  Given $I = \langle f_1, ..., f_n \rangle$, $X = V(I)$. Take $g \in I(V(I)).$ Consider $I = \langle f_1, ..., f_n, gx_{n + 1} - 1 \rangle$, an ideal of $\polyring k 1 {n + 1}$. It follows that $V(I) = \emptyset$, so $1 = \sum g_i f_i + h(g x_{n + 1} - 1)$. Now take $g = x_{n + 1}$, so that \[ 1 = \sum g_i(x_1, ..., x_n, 1/g) f_i(x_1, ..., x_n).\] Clearing denominators gives us $g^N$, for some $N$, as a linear combination of the $f_i$, so $g^N \in I$, i.e. $g \in \sqrt{I}$.
-\end{proof}
+\begin{proof}   Given $I = \langle f_1, ..., f_n \rangle$, $X = V(I)$. Take $g
+\in I(V(I)).$ Consider $I = \langle f_1, ..., f_n, gx_{n + 1} - 1 \rangle$, an
+ideal of $\polyring k 1 {n + 1}$. It follows that $V(I) = \emptyset$, so $1 =
+\sum g_i f_i + h(g x_{n + 1} - 1)$. Now take $g = x_{n + 1}$, so that \[ 1 =
+\sum g_i(x_1, ..., x_n, 1/g) f_i(x_1, ..., x_n).\] Clearing denominators gives
+us $g^N$, for some $N$, as a linear combination of the $f_i$, so $g^N \in I$,
+i.e. $g \in \sqrt{I}$. \end{proof}
 
 \section{Overview, 8/24/16}
 
-\begin{definition}
-  $J \subset \polyring k 1 n$ is geometric ideal if $J = I(S)$ for some $S \subset k^n$.
-\end{definition}
+\begin{definition}   $J \subset \polyring k 1 n$ is geometric ideal if $J =
+I(S)$ for some $S \subset k^n$. \end{definition}
 
-The nullstellensatz tells us that $J$ is geometric if and only if $J$ is a radical ideal, giving us a bijection between
-\begin{enumerate}
-\item algebraic sets of $k^n$
-\item geometric ideals of $\polyring k 1 n$
-\item reduced quotient $k$-algebra $R$ with $\polyring k 1 n \twoheadrightarrow R$ (meaning no nilpotents)
-\end{enumerate}
+The nullstellensatz tells us that $J$ is geometric if and only if $J$ is a
+radical ideal, giving us a bijection between \begin{enumerate} \item algebraic
+sets of $k^n$ \item geometric ideals of $\polyring k 1 n$ \item reduced
+quotient $k$-algebra $R$ with $\polyring k 1 n \twoheadrightarrow R$ (meaning
+no nilpotents) \end{enumerate}
 
 The first bijection is inclusion reversing.  We also have a bijection between
 \begin{enumerate}
@@ -141,32 +154,59 @@ There can't really be a good definition of dimension due to components.
 
 \subsection{Cubics in the plane}
 
-\textbf{Example}. Consider cubics in the plane in $W$-normal form: $y^2 - (x - r_1)(x - r_2)(x - r_3)$. For example, $f(x,y) = y^2 - x^3$. Then $X = V(f)$ is irreducible by Eisenstein's criterion (?). We have an embedding $k[X] = k[x,y]/\langle y^2 - x^3 \rangle$ into $k[t]$ by sending $x, y \rightarrow t^2, t^3$, i.e. $k[X] \iso k[t^2, t^3]$. However, $k(X) = k(t)$ is the field of rational functions in one variable. Geometric intuition: $f$ has well-defined tangent lines except at the origin.
+\textbf{Example}. Consider cubics in the plane in $W$-normal form: $y^2 - (x -
+r_1)(x - r_2)(x - r_3)$. For example, $f(x,y) = y^2 - x^3$. Then $X = V(f)$
+is irreducible by Eisenstein's criterion (?). We have an embedding $k[X] =
+k[x,y] \langle y^2 - x^3 \rangle$ into $k[t]$ by sending $x, y \rightarrow t^2,
+t^3$, i.e. $k[X] \iso k[t^2, t^3]$. However, $k(X) = k(t)$ is the field of
+rational functions in one variable. Geometric intuition: $f$ has well-defined
+tangent lines except at the origin.
 
-Let $g(x,y) = y^2 - x^2(x + 1)$, and $Y = V(g)$. We have an embedding $k[Y] \xhookrightarrow{} k[t]$ by $x, y \rightarrow t^2 - 1, t(t^2 - 1)$. Hence $k[Y] \iso k[t^2 - 1, t(t^2 - 1)]$. Again, $k(Y) \iso k(t)$. A commutative algebraic intuition for this is that $k[X]$ and $k[Y]$ are not integrally closed, and $k[t]$ is actually their integral closure.
+Let $g(x,y) = y^2 - x^2(x + 1)$, and $Y = V(g)$. We have an embedding $k[Y]
+\xhookrightarrow{} k[t]$ by $x, y \rightarrow t^2 - 1, t(t^2 - 1)$. Hence
+$k[Y] \iso k[t^2 - 1, t(t^2 - 1)]$. Again, $k(Y) \iso k(t)$. A commutative
+algebraic intuition for this is that $k[X]$ and $k[Y]$ are not integrally
+closed, and $k[t]$ is actually their integral closure.
 
-If we let $h_\lambda := y^2 - x(x + 1)(x - \lambda)$, for $\lambda \neq 0, -1$. Let $Z_\lambda := V(h_\lambda)$, then it turns out that $k(Z_\lambda) \not \iso k(t)$. We will actually prove this by constructing differentials on this curve. Moreover, up to a finite group acting on the $\lambda$, $k(Z_{\lambda_1}) \not \iso k(Z_{\lambda_2})$ if $\lambda_1 \neq \lambda_2$.
+If we let $h_\lambda := y^2 - x(x + 1)(x - \lambda)$, for $\lambda \neq 0,
+-1$. Let $Z_\lambda := V(h_\lambda)$, then it turns out that $k(Z_\lambda)
+\not \iso k(t)$. We will actually prove this by constructing differentials on
+this curve. Moreover, up to a finite group acting on the $\lambda$,
+$k(Z_{\lambda_1}) \not \iso k(Z_{\lambda_2})$ if $\lambda_1 \neq \lambda_2$.
 
-\begin{rmk}
-It turns out $h_\lambda$ has no common zeros with its partial derivatives. If they did, calculations can show that $\lambda = 0, -1$, a contradiction. Hence by the implicit function theore, $h_\lambda$ is a manifold. It turns out that $Z_\lambda$ being a manifold is related to the fact that $k(Z_\lambda) \neq k(t)$.
-\end{rmk}
+\begin{rmk} It turns out $h_\lambda$ has no common zeros with its partial
+derivatives. If they did, calculations can show that $\lambda = 0, -1$, a
+contradiction. Hence by the implicit function theore, $h_\lambda$ is a
+manifold. It turns out that $Z_\lambda$ being a manifold is related to the
+fact that $k(Z_\lambda) \neq k(t)$. \end{rmk}
 
-At first glance, this isn't entirely true though: $W = V(y - x^3)$ is also a manifold and $k(W) \iso k(X)$. However, it turns out that $W$ has a singular point at infinity.
+At first glance, this isn't entirely true though: $W = V(y - x^3)$ is also a
+manifold and $k(W) \iso k(X)$. However, it turns out that $W$ has a singular
+point at infinity.
 
-\begin{definition}
-  Let $X = V(P)$, some prime ideal $P$, $P = \langle f_1, ..., f_m \rangle$. If $\uline{a} = (a_1, ..., a_n)$, $J = \left( \dfrac{\partial f_i}{\partial x_j} \right)$. We say $X$ is \uline{non-singular} at $\uline{a}$ if $J(\uline{a})$ has rank $n - \dim X$.
+\begin{definition}   Let $X = V(P)$, some prime ideal $P$, $P = \langle f_1,
+..., f_m \rangle$. If $\uline{a} = (a_1, ..., a_n)$, $J = \left(
+\dfrac{\partial f_i}{\partial x_j} \right)$. We say $X$ is \uline{non-
+singular} at $\uline{a}$ if $J(\uline{a})$ has rank $n - \dim X$.
 \end{definition}
 
-\begin{thm}
-At all $x \in X$, $\mathrm{rank} J \leq n - \dim X$. Equality holds away from an algebraic subset $Y \subset X$, which has measure 0, a consequence of the Zariski topology.
-\end{thm}
+\begin{thm} At all $x \in X$, $\mathrm{rank} J \leq n - \dim X$. Equality
+holds away from an algebraic subset $Y \subset X$, which has measure 0, a
+consequence of the Zariski topology. \end{thm}
 
-\subsection{Birational geometry}
-In birational geometry, we study the classification of fields $K$ of finite transcendence degree over $k = \bar{k}$. The idea is that if $K$ has transcendence degree $n$, meaning there are $x_1, ..., x_n$ such that $K/k(x_1, ..., x_n)$ is a finite field extension. Consider the ring of integers of both fields, and let the ring of integers of the larger field be $A$.
+\subsection{Birational geometry} In birational geometry, we study the
+classification of fields $K$ of finite transcendence degree over $k =
+\bar{k}$. The idea is that if $K$ has transcendence degree $n$, meaning there
+are $x_1, ..., x_n$ such that $K/k(x_1, ..., x_n)$ is a finite field
+extension. Consider the ring of integers of both fields, and let the ring of
+integers of the larger field be $A$.
 
-\begin{thm}
-$A$ is a finitely generated $k$-algebra.
-\end{thm}
+\begin{thm} $A$ is a finitely generated $k$-algebra. \end{thm}
 
-It turns out that $A$ corresponds to a \uline{normal variety} $X \subset k^N$ (a normal affine model of $K$). The question then arises: can you find $x_1, ..., x_n \in K$ such that the model $X$ (and points at infinity) is non-singular. Hironaka answered this question affirmatively for characteristic zero, and it is unknown in characteristic $p$.
+It turns out that $A$ corresponds to a \uline{normal variety} $X \subset k^N$
+(a normal affine model of $K$). The question then arises: can you find $x_1,
+..., x_n \in K$ such that the model $X$ (and points at infinity) is non-
+singular. Hironaka answered this question affirmatively for characteristic
+zero, and it is unknown in characteristic $p$.
+
 \end{document}
