@@ -43,6 +43,7 @@
 \newcommand{\rats}{\mathbb{Q}}
 \newcommand{\reals}{\mathbb{R}}
 \newcommand{\cmplx}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Tone}{T_1}
 \newcommand{\T}[1]{\Tone(#1)}
 \newcommand{\Tvar}[1]{T_{#1}}
@@ -116,5 +117,14 @@ have two components, and by definition, only one of these has the identity. So
 Lie algebra cannot ``see'' the components, and so it gives us something for
 connected groups, e.g. $\T S^1 = \T \reals = \reals.$ However, it will be able
 to tell us something about the group's universal cover.
+
+\section{Overview, 8/26/16}
+Recall we constructed the Lie group functor $G \rightarrow L(G)$ in the case of $G = \gl n \reals$ by looking at an inner automorphism.
+
+Now assume $G$ is connected. If $G$ is nice enough, you can construct a universal covering space $\hat{G}$, and there is the covering map $p: \hat{G} \rightarrow G$. We will show that $p$ is a Lie group morphism, and that $L(p)$ is a Lie algebra isomorphism.
+
+We will show that there is an equivalence of categories between Lie algebras and connected, simply-connected Lie groups. Take a connected Lie group $G$, $\dim G = 1$, so that $\dim L(G) = 1$ and $L(G) \iso \reals$ and $[ \cdot, \cdot ] = 0$ and $(\reals, +) = H$ has $L(H) = \reals$. Any such $G$ has $\reals$ as a covering space.Say we have a covering map $c: \reals \rightarrow C$. Then $\ker c$ is closed and a discrete subgroup so $G \iso \Z$ or $0$. So $G$ is either $\reals$ or $\reals/\Z$.
+
+$G$ is a connected Lie group if and only if $L(G)$ is abelian, so the Lie bracket is identically zero. The rest is incomprehensible since I was sleepy.
 
 \end{document}

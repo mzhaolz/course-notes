@@ -40,6 +40,8 @@
 \newcommand{\gal}[3]{\mathrm{Gal}(#1 #2 #3)}
 \newcommand{\iso}{\cong}
 \newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\cmplx}{\mathbb{C}}
 \renewcommand{\prime}{\mathfrak{p}}
 \newcommand{\oprime}{\mathfrak{P}}
 \newcommand{\oprimealt}{\oprime^o}
@@ -53,7 +55,8 @@
 \newcommand{\Zp}{\mathbb{Z}/p\mathbb{Z}}
 \newcommand{\Zpu}{\left(\mathbb{Z}/p\mathbb{Z}\right)^\times}
 \newcommand{\nnreals}{\mathbb{R}^{\geq 0}}
-\newcommand{\Qp}{\mathbb{Q}_p}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Qp}{\Q_p}
 
  \graphicspath{{./figures/}} %note trailing /
 
@@ -258,6 +261,7 @@ then $m | a_i$ for all $i$.
 \end{proof}
 
 \section{Review of Local Fields, 8/25/16}
+\subsection{Locla Fields Facts}
 Let $K$ be a field, then absolute value on $K$ is a map to $\nnreals$ that is multiplicative, satisfies the triangle inequality and is positive semi-definite. Includes for instance the $p$-adic norm, archimedean absolute values.
 
 \begin{definition}
@@ -300,7 +304,69 @@ If $| \cdot |, | \cdot |'$ are absolute values on $k$, then TFAE:
 The only absolute values on $\Q$ are the usual one and the $p$-adic ones.
 \end{thm}
 
-\begin{thm}
-
+\begin{thm}[Weak Approximation]
+  Let $| \cdot |_1, ..., | \cdot |_n$ be pairwise inequivalent absolute values on $k$. Then \[ k \xhookrightarrow{} \prod_{i = 1}^n k_{| \cdot |_i} \] is dense, where the subscripts indicate completions with respect to those absolute values.
 \end{thm}
+
+\begin{proof}
+First, we claim that there exists $a \in k$ with $|a|_1 > 1$ and $|a|_i < 1$ for the other $i$. Work by induction. This is clearly true for $n = 1$. For $n = 2$, if $| \cdot |_1 \not \iso | \cdot |_2$ then there are $b, c$ such that $|b|_1 < 1, |b|_2 \geq 1$, $|c|_1 \geq 1, |c|_2 < 1$. Then let $a = b/c$. By indcution, there's $b \in k$ such that $|b|_1 > 1, |b|_i < 1$ and (by $n = 2$ case), $|c| > 1, |c|_n < 1$. If $|b|_n < 1$, we're done. If $|b|_n = 1$, set $a = cb^m$ for $m$ large enough. Otherwise, set $a = cb^m/(1 + b^m)$. Done.
+
+Next, we show that for any $\epsilon > 0$, there is an $\alpha \in k$ such that $|a - 1|_1 < \epsilon$ and $|a|_i < \epsilon$. Take $a$ as above, i.e. $\alpha^m/(1 + \alpha^m)$ for $m >> 0$. 
+
+Let $x_1, ..., x_n \in k$. For each $i$, choose $|\alpha_i - 1|_i$ very small, $|\alpha_i|_{j \neq i}$ very small, and set $x = \sum x_i \alpha_i$.
+\end{proof}
+
+\subsection{Hensel's Lemma}
+Let $\mathcal{O}$ be a complete discrete valuation ring (e.g. any local ring). We want to discuss Hensel's lemma.
+
+\begin{thm}[Version 1]
+  Let $f(x) \in \mathcal{O}[X]$. Let $a_0 \in \mathcal{O}$ be such that $|f(a_0)| < |f'(a_0)|^2$. Then there is a root $a \in \mathcal{O}$ of $f$ such that $|a - a_0| < |f(a_0)/f'(a_0)^2|$.
+\end{thm}
+\begin{proof}
+Literally Newton's method.
+\end{proof}
+
+For example, if $\mathcal{O} = \Z_5$ and $f(X) = X^3 + X + 3$, then $f(1) \equiv 0 \pmod 5$, $f'(1) \equiv 4 \pmod 5$. Then we can let $a_1 = a_0 - f(a_0)/f'(a_0) \equiv 6 \pmod 25$.
+
+\textbf{Important Example}. If $\mathcal{O} = \Zp$, and $f(X) = X^p - X$, then for any $a \in \mathbb{F}_p$, $f(a) \equiv 0 \pmod p$, and $f'(a) \equiv -1 \pmod p$. Then there exists an $a* \in \Zp$ such that $a* \equiv a \pmod p, f(a) = 0$. Hence we can conclude that the $p$-th roots of unity are contained in $\Qp$ and reduction mod $p$ is a group isomorphism from $\mu_{p - 1}(\Zp) \iso \mathbb{F}_p^\times$. The inverse of this map is called the Teichmuller lift.
+
+In general, if $\mathcal{O}$ is a discrete valuation ring, with finite residue field $k$, then $\mu_{|k| - 1}(\mathcal{O}) \iso k^\times$.
+
+\begin{thm}[Version 2]
+  Let $\mathcal{O}$ be a DVR with residue field $k = \mathcal{O}/\mathfrak{m}$. Let $f(X) \in \mathcal{O}[X]$. If $\bar{f}(X) \in k[X]$ factors as $g_0(X) h_0(X)$ with $g_0, h_0$ monic and coprime, then $f(X) = g(X) h(X)$ for unique monic $g, h \in \mathcal{O}[X]$ such that $g \equiv g_0, h \equiv h_0 \pmod{\mathfrak{m}}$.
+\end{thm}
+
+\subsection{Extension of Valuations}
+\begin{prop}
+Let $k$ be complete with respect to a discrete $| \cdot |_v$. Let $L/K$ be a finite separable extension. Then $| \cdot |_v$ extends uniquely to $L$, $L$ is complete with respect to this extension, and for every $\alpha \in L$, $|\alpha|_v := |N_{L/K}(\alpha)|^{1/[L:K]}.$
+\end{prop}
+
+\begin{proof}
+If both were an extension, then since all norms on a finite dimensional vector space over a complete field are equivalent, they define the same topology and so the exponent must be equal.
+
+  To prove existence, note that there is a unique maximal ideal $\mathfrak{m}_L$ of $\mathcal{O}_L$ above that of $\roi k$. You can define a valuation upstairs by defining one on the maximal ideal, then normalize.
+\end{proof}
+\begin{rmk}
+The formula is forced by existence of uniqueness. If $L/K$ is a Galois extension, $|\sigma( \cdot )|$ is another absolute value, so $| \sigma (\cdot)| = | \cdot |$ by uniqueness, and take the product over all elements of the Galois group.
+\end{rmk}
+
+Suppose $k$ is complete with respect to the discrete, non-archimedean valuation. Let $L/K$ be a finite separable extension. Let $v_k$ be the normalized valuation on $k$, i.e. $v: k \twoheadrightarrow \mathbb{Z}$. Let $\pi_k$ be the generator of the maximal ideal of $\roi k$ (a uniformizing element). Let $w : L \rightarrow \reals$ be the unique extension of $v_k$ to $L$.
+
+\begin{definition}
+  Let $e_{L/K} = [ w(L^\times) : v_k(k^\times)]$, i.e. $\pi_k \roi L = \pi_L^{e_{L/K}}$, be the \uline{ramification} degree. Let $f_{L/K} = [k_L : k_k]$ be the degree of the residue field extension be called the \uline{inertial} degree.
+\end{definition}
+
+\textbf{Example}. If $L = \Qp(\sqrt{p})$, $e_{L/K} = 2, f_{L/K} = 1$.
+
+\textbf{Example}. Let $L = \Qp(\zeta)$ where $\zeta^{p^2 - 1} = 1$, and $\zeta^{p - 1} \neq 1$. Then $e_{L/K} = 1, f_{L/K} = 2$. Minimal polynomial is $(X - \zeta)(X - \zeta^p)$.
+
+\begin{definition}[Purist's]
+A local field is a field with nontrivial absolute value inducing a locally compact topology on $k$.
+\end{definition}
+
+\begin{definition}
+Namely, it is either $\reals, \cmplx$ in the archimedean case, or in the non-archimedean case, a finite extension of $\Qp$ or $\mathbb{F}_p((T))$.
+\end{definition}
+
+Note that $k$ is complete with respect to non-archimedean absolute value if and only if the residue field is finite and $\roi K$ is compact. Looking ahead, we aim to understand $\gal \bar{k} k$ where $k/\Qp$ is a finite extension.
 \end{document}
