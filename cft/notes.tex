@@ -6,6 +6,7 @@
 \usepackage{flexisym}
 \usepackage{graphicx}
 \usepackage{mathtools}
+\usepackage[normalem]{ulem}
 \usepackage[bookmarks,colorlinks,breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
 \usepackage{color}
 \definecolor{dullmagenta}{rgb}{0.4,0,0.4}   % #660066
@@ -45,11 +46,14 @@
 \newcommand{\frob}[1]{\mathrm{Fr}_{#1}}
 \newcommand{\legndr}[2]{\left(\dfrac{#1}{#2}\right)}
 \newcommand{\N}[1]{N(#1)}
-\newcommand{\Z}[1]{\mathbb{Z}/#1 \mathbb{Z}}
+\newcommand{\Zmod}[1]{\mathbb{Z}/#1 \mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Zn}{\mathbb{Z}/n\mathbb{Z}}
 \newcommand{\Znu}{\left(\mathbb{Z}/n\mathbb{Z}\right)^\times}
 \newcommand{\Zp}{\mathbb{Z}/p\mathbb{Z}}
 \newcommand{\Zpu}{\left(\mathbb{Z}/p\mathbb{Z}\right)^\times}
+\newcommand{\nnreals}{\mathbb{R}^{\geq 0}}
+\newcommand{\Qp}{\mathbb{Q}_p}
 
  \graphicspath{{./figures/}} %note trailing /
 
@@ -154,7 +158,7 @@ Also characterized by $\tau(\zeta_n) = \zeta_n^p$ since \[\tau \sum a_i
 
 \subsubsection{$\frob \oprime$ of Quadratic Field}
 
-Here, we let $L = \rats(\sqrt{d})$ and $K$ as before. Then $\gal L/K \iso \Z
+Here, we let $L = \rats(\sqrt{d})$ and $K$ as before. Then $\gal L/K \iso \Zmod
 2$, and for $p$ unramified in $L$, $\frob p$ corresponds to $1$ if $p$ splits
 in $L$, or $-1$ if $p$ is inert in $L$. This means that \[\frob p = \legndr d
 p.\]
@@ -252,4 +256,51 @@ then $m | a_i$ for all $i$.
 
 \end{lem}
 \end{proof}
+
+\section{Review of Local Fields, 8/25/16}
+Let $K$ be a field, then absolute value on $K$ is a map to $\nnreals$ that is multiplicative, satisfies the triangle inequality and is positive semi-definite. Includes for instance the $p$-adic norm, archimedean absolute values.
+
+\begin{definition}
+Absolute value is \uline{non-archimedean} if $|x + y| \leq \max(|x|, |y|)$.
+\end{definition}
+
+In non-archimedean fields, we talk about valuations, i.e. maps $v: K \rightarrow \mathbb{R} \cup \{ \infty \}$ which is additive, i.e. $v(x + y) \geq \min( v(x), v(y))$ and $v(0) = \infty$. For instance, $v(p^n \frac{a}{b}) = n$.
+
+\begin{definition}
+Given a non-archimedean valuation, let
+\begin{align*}
+  \roi v & = \{ x \in k | |x| \leq 1 \} \\
+  \mathfrak{m}_v & = \{ x \in k | |x| < 1 \} \\
+  {\roi v}^\times & = \{ x \in k | |x| = 1 \}
+\end{align*}
+\end{definition}
+
+\begin{lem}
+$| \cdot |_v$ is discrete if and only if $\mathfrak{m}_v$ is principal.
+\end{lem}
+
+For example, $\Qp, | \cdot |_p$ is discrete, and $|\Qp \setminus 0| = p^\Z$.
+However, $\overline \Qp$ with $| \cdot |_p$ is non-discrete, since
+$|p^{1/n}| = p^{-1/n} \rightarrow 1$.
+
+\begin{rmk}
+Any $| \cdot |$ on $k$ topologizes $k$.
+\end{rmk}
+
+\begin{lem}
+If $| \cdot |, | \cdot |'$ are absolute values on $k$, then TFAE:
+\begin{enumerate}[(1)]
+  \item they define the same topology
+  \item $\roi {| \cdot |} = \roi {| \cdot |'}$
+  \item $|x| = (|x|')^r$, some $r \in R$.
+\end{enumerate}
+\end{lem}
+
+\begin{thm}[Ostrowski]
+The only absolute values on $\Q$ are the usual one and the $p$-adic ones.
+\end{thm}
+
+\begin{thm}
+
+\end{thm}
 \end{document}
